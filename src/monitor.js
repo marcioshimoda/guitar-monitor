@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { config } from "./config.js";
-import { parseProductPage } from "./parser.js";
 
 export async function checkStore(store) {
   console.log(
@@ -10,10 +9,13 @@ export async function checkStore(store) {
 
   const response = await axios.get(
     store.url,
-    config.request
+    {
+      ...config.request,
+      ...store.request,
+    }
   );
 
-  return parseProductPage(
+  return store.parser(
     store,
     response.data
   );

@@ -15,7 +15,9 @@ function getDaysRemaining(forecastDate) {
   const diffMs =
     forecastDate.getTime() - now.getTime();
 
-  return diffMs / (1000 * 60 * 60 * 24);
+  return diffMs / (
+    1000 * 60 * 60 * 24
+  );
 }
 
 function addJitter(minutes) {
@@ -25,11 +27,25 @@ function addJitter(minutes) {
   return minutes + jitter;
 }
 
-export function calculateNextInterval(
-  forecast
+export function calculateStoreInterval(
+  store,
+  storeState
 ) {
+  if (
+    store.polling.strategy === "fixed"
+  ) {
+    return addJitter(
+      store.polling.intervalMinutes
+    );
+  }
+
+  const forecast =
+    storeState.forecast;
+
   if (!forecast) {
-    return 60;
+    return addJitter(
+      store.polling.baseIntervalMinutes
+    );
   }
 
   const forecastDate =
@@ -47,7 +63,9 @@ export function calculateNextInterval(
   } else if (daysRemaining > 2) {
     minutes = 60;
   } else if (daysRemaining > 0) {
-    minutes = 10;
+    minutes =
+      store.polling
+        .aggressiveIntervalMinutes;
   } else {
     minutes = 5;
   }

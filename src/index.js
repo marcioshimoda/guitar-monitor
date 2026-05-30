@@ -4,7 +4,7 @@ import { checkStore } from "./monitor.js";
 import { loadState, saveState } from "./storage.js";
 import { compareStates } from "./comparator.js";
 import { notifyChanges } from "./notifier.js";
-import { calculateNextInterval } from "./scheduler.js";
+import { calculateStoreInterval } from "./scheduler.js";
 
 async function runMonitor() {
   try {
@@ -15,6 +15,8 @@ async function runMonitor() {
 
     const state = await loadState();
 
+    const intervals = [];
+
     for (const store of stores) {
       const previousStoreState =
         state.stores?.[store.id];
@@ -22,14 +24,15 @@ async function runMonitor() {
       const currentStoreState =
         await checkStore(store);
 
-      console.log(currentStoreState);
-
       const changes = compareStates(
         previousStoreState,
         currentStoreState
       );
 
-      console.log(changes);
+      console.log(
+        `${store.name}:`,
+        changes
+      );
 
       await notifyChanges(
         changes,
@@ -38,23 +41,27 @@ async function runMonitor() {
 
       state.stores[store.id] =
         currentStoreState;
+
+      const interval =
+        calculateStoreInterval(
+          store,
+          currentStoreState
+        );
+
+      intervals.push(interval);
+
+      console.log(
+        `${store.name} next check in ${interval} minutes`
+      );
     }
 
     await saveState(state);
-
-    const intervals = Object.values(
-      state.stores
-    ).map((storeState) =>
-      calculateNextInterval(
-        storeState.forecast
-      )
-    );
 
     const nextIntervalMinutes =
       Math.min(...intervals);
 
     console.log(
-      `Next check in ${nextIntervalMinutes} minutes`
+      `Global next check in ${nextIntervalMinutes} minutes`
     );
 
     setTimeout(
