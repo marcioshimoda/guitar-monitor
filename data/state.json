@@ -1,0 +1,20 @@
+{
+  "stores": {
+    "pride": {
+      "storeId": "pride",
+      "storeName": "Pride Music",
+      "availability": false,
+      "forecast": "15/07/2026",
+      "hash": "17cd69265dcc510b7a84e778c4b7f6129382892eed19e74d177eb61a4448e0c6",
+      "checkedAt": "2026-05-30T20:38:59.901Z"
+    },
+    "royal": {
+      "storeId": "royal",
+      "storeName": "Royal Music",
+      "availability": true,
+      "forecast": null,
+      "hash": "cfe557aab44c765e92d0422c28593ed21bccd207713c35649c588fbaf48634a4",
+      "checkedAt": "2026-05-30T20:39:01.309Z"
+    }
+  }
+}
