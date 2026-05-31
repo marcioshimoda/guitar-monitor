@@ -1,22 +1,13 @@
-import axios from "axios";
-
-import { config } from "./config.js";
+import { scrapeStore } from "./scrapers/index.js";
 
 export async function checkStore(store) {
   console.log(
     `Checking ${store.name}...`
   );
 
-  const response = await axios.get(
-    store.url,
-    {
-      ...config.request,
-      ...store.request,
-    }
+  const html = await scrapeStore(
+    store
   );
 
-  return store.parser(
-    store,
-    response.data
-  );
+  return store.parser(store, html);
 }

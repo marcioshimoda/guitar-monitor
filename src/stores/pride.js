@@ -13,7 +13,7 @@ export const prideStore = {
   priority: "high",
 
   scraping: {
-    mode: "http",
+    mode: "playwright",
   },
 
   polling: {
