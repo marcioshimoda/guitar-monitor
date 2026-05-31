@@ -36,7 +36,7 @@ ${change.message}
 📅 Previsão:
 ${currentState.forecast ?? "Não encontrada"}
 
-🔗 ${config.productUrl}
+🔗 ${currentState.storeUrl}
 `;
 
     case "FORECAST_CHANGED":
@@ -45,7 +45,7 @@ ${currentState.forecast ?? "Não encontrada"}
 
 ${change.message}
 
-🔗 ${config.productUrl}
+🔗 ${currentState.storeUrl}
 `;
 
     case "CONTENT_CHANGED":
@@ -55,7 +55,7 @@ ${change.message}
 📅 Previsão atual:
 ${currentState.forecast ?? "Não encontrada"}
 
-🔗 ${config.productUrl}
+🔗 ${currentState.storeUrl}
 `;
 
     default:

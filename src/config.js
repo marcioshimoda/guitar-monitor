@@ -3,8 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const config = {
-  productUrl: process.env.PRODUCT_URL,
-
   telegram: {
     botToken: process.env.TELEGRAM_BOT_TOKEN,
     chatId: process.env.TELEGRAM_CHAT_ID,

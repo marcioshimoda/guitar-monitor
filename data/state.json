@@ -3,10 +3,11 @@
     "pride": {
       "storeId": "pride",
       "storeName": "Pride Music",
+      "storeUrl": "https://www.pridemusicshop.com.br/produto/epiphone//10940090/epiphone-back-to-the-future-es-345",
       "availability": false,
       "forecast": "15/07/2026",
       "hash": "17cd69265dcc510b7a84e778c4b7f6129382892eed19e74d177eb61a4448e0c6",
-      "checkedAt": "2026-05-31T00:42:32.490Z"
+      "checkedAt": "2026-05-31T02:35:52.210Z"
     },
     "royal": {
       "storeId": "royal",

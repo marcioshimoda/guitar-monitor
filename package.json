@@ -1,6 +1,6 @@
 {
   "name": "guitar-monitor",
-  "version": "00.01.00",
+  "version": "00.01.01",
   "main": "src/index.js",
   "description": "",
   "type": "module",

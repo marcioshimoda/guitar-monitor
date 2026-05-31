@@ -18,6 +18,7 @@ export function buildProductState({
   return {
     storeId: store.id,
     storeName: store.name,
+    storeUrl: store.url,
 
     availability,
     forecast,
